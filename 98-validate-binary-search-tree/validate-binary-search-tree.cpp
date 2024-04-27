@@ -37,6 +37,8 @@ public:
     //     bool ans=solve(root,lowerBound,upperBound);
 
     //     return ans;
+
+    //***M--2 USING SORTED METHOD:::
     void inOrder(TreeNode* root,vector<int>&ans){
         if(root==NULL){
             return;
