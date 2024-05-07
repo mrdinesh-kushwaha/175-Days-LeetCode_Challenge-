@@ -68,15 +68,14 @@ public:
 
         if(head==NULL)
         return head;
-        ListNode* head1=head;
-        ListNode* head2=head;
-        while(head2){
-            head2->val=2*head2->val;
-            head2=head2->next;
+        ListNode* temp=head;
+        while(temp){
+            temp->val=2*temp->val;
+            temp=temp->next;
         }
-        ListNode* head3=reverseLL(head1);
-        ListNode* ans=additionLL(head3);
-        ListNode* ans1=reverseLL(ans);
+        ListNode* head1=reverseLL(head); // update head reverse::
+        ListNode* ans=additionLL(head1); // now reverse ll Add
+        ListNode* ans1=reverseLL(ans); // now again reverse final addition LL 
         return ans1;
         
     }
