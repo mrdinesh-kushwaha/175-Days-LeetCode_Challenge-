@@ -47,30 +47,6 @@ public:
     insertTrieNode(child,word.substr(1));
 }
 
-bool findWord(TrieNode* root,string word){ // Searching TrieNode
-
-    //base case
-    if(word.size()==0){
-        return root->isTerminal;
-    }
-
-    char ch=word[0];
-    int index=ch-'a';
-
-    TrieNode * child;
-    if(root->children[index]!=NULL){
-        // nove
-        child=root->children[index];
-    }
-    else{
-        return false;
-    }
-
-    // call recursion
-    return findWord(child,word.substr(1));
- 
-   }
-
    void LCA(TrieNode* root,string first,string &ans){
 
     if(root->isTerminal) // String NULL ho jaye 
