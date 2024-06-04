@@ -16,25 +16,47 @@
 //     }
 // };
 
+// class Solution { // tebulations t.c= O(N) s.c= O(N) dp array
+// public:
+// int solve(int idx,vector<int>&nums,vector<int>&dp){
+
+//     dp[0]=nums[0];
+
+//     for(int i=1;i<nums.size();i++){
+//         int temp=0;
+//         if(i-2>=0) temp=dp[i-2];
+
+//         int take= nums[i]+ temp;
+//         int nontake= 0+ dp[i-1];
+
+//         dp[i]=max(take,nontake);
+//     }
+//     return dp[nums.size()-1]; // same as adjacent sum :max
+// }
+//     int rob(vector<int>& nums) {
+//         vector<int>dp(nums.size(),0);
+//         return solve(0,nums,dp);
+//     }
+// };
+
+// optimise space complexity :O(1)
+
 class Solution { // tebulations t.c= O(N) s.c= O(N) dp array
 public:
-int solve(int idx,vector<int>&nums,vector<int>&dp){
-
-    dp[0]=nums[0];
-
-    for(int i=1;i<nums.size();i++){
-        int temp=0;
-        if(i-2>=0) temp=dp[i-2];
-
-        int take= nums[i]+ temp;
-        int nontake= 0+ dp[i-1];
-
-        dp[i]=max(take,nontake);
-    }
-    return dp[nums.size()-1]; // same as adjacent sum :max
-}
     int rob(vector<int>& nums) {
-        vector<int>dp(nums.size(),0);
-        return solve(0,nums,dp);
+    int n= nums.size();
+    int prev1= nums[0];
+    int prev2= 0;
+    for(int i=1;i<n;i++){
+        int temp=0;
+        if(i-2 >=0) temp= prev2;
+        int take= nums[i]+ temp;
+        int nontake= 0+prev1;
+
+        int curr= max(take,nontake);
+        prev2 = prev1;
+        prev1= curr;
+    }
+    return prev1;
     }
 };
