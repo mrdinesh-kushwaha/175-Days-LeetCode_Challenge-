@@ -22,7 +22,7 @@ bool solve(int idx,vector<int>&nums,int target,vector<vector<int>>&dp){
         for(auto i:nums) sum+=i;
         if(sum & 1) return false;
         int target=sum/2;
-        vector<vector<int>>dp(n,vector<int>(target+1,-1));
+        vector<vector<int>>dp(n+1,vector<int>(target+1,-1));
         return solve(0,nums,target,dp);
     }
 };
