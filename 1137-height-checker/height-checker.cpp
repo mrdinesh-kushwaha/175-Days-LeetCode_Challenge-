@@ -3,9 +3,11 @@ public:
     int heightChecker(vector<int>& heights) {
         
         vector<int>temp(heights.size());
-        for(int i=0;i<heights.size();i++){
-            temp[i]=heights[i];
-        }
+        temp=heights;// compy all element into temp:
+
+        // for(int i=0;i<heights.size();i++){
+        //     temp[i]=heights[i];
+        // }
 
         sort(heights.begin(),heights.end());
 
