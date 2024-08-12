@@ -1,7 +1,7 @@
 class KthLargest {
 public:
     int K;
-    priority_queue<int,vector<int>,greater<int>>pq;
+    priority_queue<int,vector<int>,greater<int>>pq; //define min priority queue:
     KthLargest(int k, vector<int>& nums) {
         K=k;
         for(auto &num :nums){
