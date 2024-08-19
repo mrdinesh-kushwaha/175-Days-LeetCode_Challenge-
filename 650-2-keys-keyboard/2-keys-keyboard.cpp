@@ -1,17 +1,19 @@
 class Solution {
 public:
- int minSteps(int n) {
-    vector<int> dp(n + 1, INT_MAX); // dp[i] will hold the minimum steps to get i 'A's
-    dp[1] = 0; // No operations needed for 1 'A'
+    int solve(int currA,int clipA,int n,vector<vector<int>>& dp){
+        if(currA==n) return 0;
 
-    for (int i = 2; i <= n; ++i) {
-        for (int j = 1; j * j <= i; ++j) {
-            if (i % j == 0) {
-                dp[i] = min(dp[i], dp[j] + (i / j)); // j 'A's pasted (i/j) times
-                dp[i] = min(dp[i], dp[i / j] + j); // (i/j) 'A's pasted j times
-            }
-        }
+        if(currA > n) return 100000;
+        if(dp[currA][clipA]!=-1) return dp[currA][clipA];
+        int copyAllPaste = 1+1+solve(currA+currA,currA,n,dp);
+        int paste= 1+ solve(currA+clipA,clipA,n,dp);
+
+        return dp[currA][clipA]=min(copyAllPaste,paste);
     }
-    return dp[n];
+
+    int minSteps(int n) {
+        if(n==1) return 0;
+        vector<vector<int>>dp(n+1,vector<int>(n+1,-1)); // recursion+DP
+        return 1+ solve(1,1,n,dp);
     }
 };
