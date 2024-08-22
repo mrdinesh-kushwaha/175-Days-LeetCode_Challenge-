@@ -1,13 +1,13 @@
-class Solution {
-public:
-// int findComplement(int num) {
+// class Solution {
+// public:
+// // int findComplement(int num) {
     // if (num == 1)
     //     return 0;
     // if (num == 0)
     //     return 1;
 
     // long long binary = 0;
-    // long long multiplier = 1;
+    // long long multiplier = 1;   // data type  overflow
 
     // // Convert num to binary (stored as an integer)
     // while (num != 0) {
@@ -46,19 +46,18 @@ public:
 
     // return ans;
 
- int findComplement(int num) {
-    // Edge case: if num is 0, its complement is 1
-    if (num == 0)
-        return 1;
-
-    unsigned mask = ~0; // Start with all bits set to 1
-    while (num & mask) {
-        mask <<= 1;
-    }
-
-    // XOR num with the mask to flip all bits up to the highest set bit
-    return ~num & ~mask;
-
+class Solution {
+public:
+    int findComplement(int num) {
+        int i = 0, ans = 0;
+        while (num) {
+            int temp = num & 1;
+            if (!temp)
+                ans += pow(2, i);
+            num = num >> 1; // right shift (divide by 2)
+            i++;
+        }
+        return ans;
    }
 
 };
