@@ -1,23 +1,20 @@
 class Solution {
 public:
     int getLucky(string s, int k) {
-        
+
         string temp="";
         for(int i=0;i<s.length();i++){
-            int num=s[i]-'a'+1;
+            int num=s[i]-'a'+1; // map a->1 , b->2 , .....
             temp+=to_string(num);
         }
-        int ans=0;
-        while(k){
+    
+        while(k--){
+           int ans=0;
            for(int i=0;i<temp.length();i++){
-            ans+=temp[i]-'0';
+            ans+=temp[i]-'0'; // string to integer:::
            }
-           k--;
-           if(k!=0){
-           temp=to_string(ans);
-           ans=0;
-           }
+           temp=to_string(ans); // convert integer to string
         }
-        return ans;
+        return stoi(temp);
     }
 };
