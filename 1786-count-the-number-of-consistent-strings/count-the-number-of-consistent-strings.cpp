@@ -3,8 +3,8 @@ public:
     int countConsistentStrings(string allowed, vector<string>& words) {
         set<char>st(allowed.begin(),allowed.end());
         int count=0;
-        for(int i=0;i<words.size();i++){
-            string temp=words[i];
+        for(string s:words){
+            string temp=s;
             int f=0;
             for(int i=0;i<temp.length();i++){
                 if(st.count(temp[i])){
