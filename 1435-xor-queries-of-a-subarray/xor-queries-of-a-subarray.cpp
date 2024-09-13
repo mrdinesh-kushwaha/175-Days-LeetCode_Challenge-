@@ -7,10 +7,7 @@ public:
             int left=queries[i][0];
             int right=queries[i][1];
             int temp=arr[left];
-            if(left==right){
-                ans.push_back(arr[left]);
-            }
-            else {
+            // find xor in given left and right intervals
                 while(left<right){
                 if(left+1<=right){
                     temp=temp^arr[left+1];
@@ -18,7 +15,6 @@ public:
                 left++;
             }
             ans.push_back(temp);
-            }
         }
         return ans;
     }
