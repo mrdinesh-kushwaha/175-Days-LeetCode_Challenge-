@@ -27,7 +27,7 @@ public:
             if(frontNode==NULL){
                 if(!q.empty()){ // last val maxi element nhi aayega bcz vaha pr q empty ho jayega
                     q.push(NULL);
-                    ans.push_back(temp);
+                    ans.push_back(temp); // ek pura level katm hone baad insert kr rhe ha jo max hai
                     temp=INT_MIN;
                 }
             }
