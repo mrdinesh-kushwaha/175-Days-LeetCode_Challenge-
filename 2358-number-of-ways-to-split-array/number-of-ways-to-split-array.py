@@ -4,7 +4,7 @@ class Solution(object):
         n=len(nums)
         currSum=0
         count=0
-        for i in range(n-1):
+        for i in range(0,n-1):
             currSum+=nums[i]
             if(currSum >= total_sum - currSum):
                 count+=1
