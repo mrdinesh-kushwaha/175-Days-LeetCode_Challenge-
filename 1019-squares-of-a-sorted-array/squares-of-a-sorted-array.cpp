@@ -18,18 +18,18 @@ public:
         int right = size-1;
         int k = size-1;
 
-        vector<int>ans(size);
+        vector<int>ans(size); // extra space 
 
         while(left<=right){
-            if(abs(nums[left]) > abs(nums[right])){
-                ans[k] = nums[left]*nums[left];
-                left++;
-            }
-            else{
-                ans[k] = nums[right]*nums[right];
-                right--;
-            }
-            k--;
+          if(abs(nums[left]) > abs(nums[right])){
+            ans[k] = nums[left]*nums[left];
+            left++;
+          }
+          else{
+            ans[k] = nums[right]*nums[right];
+            right--;
+          }
+          k--;
         }
         return ans;
     }
