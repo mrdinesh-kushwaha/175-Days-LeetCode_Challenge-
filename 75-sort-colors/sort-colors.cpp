@@ -1,20 +1,28 @@
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
+      // Solved using dutch's flag Algorithm
+      int n = nums.size();
+      int left=0;
+      int mid = 0;
+      int right = n-1;
 
-        int zeroCnt=0;
-        int oneCnt=0;  // inplace sort means: take O(1) extra space:
-        int twoCnt=0;
-
-        for(int i=0;i<nums.size();i++){
-            if(nums[i]==0) zeroCnt++;
-            else if(nums[i]==1) oneCnt++;
-            else twoCnt++;
+      while(mid<=right){
+        //case-1
+        if(nums[mid]==0){
+            swap(nums[left],nums[mid]);
+            left++;
+            mid++;
         }
-        int s=0;
-        while(zeroCnt--) nums[s++]=0;
-        while(oneCnt--) nums[s++]=1;
-        while(twoCnt--) nums[s++]=2;
-        
+        //Case-2
+        else if(nums[mid]==1){
+            mid++;
+        }
+        //Case-3
+        else{ // nums[mid]==2
+            swap(nums[mid],nums[right]);
+            right--;
+        }
+      }  
     }
 };
