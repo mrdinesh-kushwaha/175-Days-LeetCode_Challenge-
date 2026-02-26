@@ -9,10 +9,8 @@ public:
 
         // return nums;
 
+
         //method-2 O(N)
-        
-     
-        
         int left = 0;
         int size= nums.size();
         int right = size-1;
@@ -32,5 +30,6 @@ public:
           k--;
         }
         return ans;
+
     }
 };
