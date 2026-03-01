@@ -5,7 +5,7 @@ public:
       int n = nums.size();
       int left=0;
       int mid = 0;
-      int right = n-1;
+      int right = n-1;  
 
       while(mid<=right){
         //case-1
