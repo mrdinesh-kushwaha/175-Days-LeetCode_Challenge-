@@ -2,28 +2,23 @@ class Solution {
 public:
     int totalFruit(vector<int>& fruits) {
         int n = fruits.size();
-        unordered_map<int,int>freq;
-
-        int low=0, high=0;
         int ans = INT_MIN;
-        while(high<n){
-            freq[fruits[high]]++;
+        int left = 0;
+        unordered_map<int, int>mp;
 
-            // shrinking process
-            while(freq.size()>2)  // maximum i can get 2 basket
-            {
-                freq[fruits[low]]--;
-                if(freq[fruits[low]]==0){
-                    freq.erase(fruits[low]);
-                }
-                low++;
+        for(int right=0;right<n;right++){
+            mp[fruits[right]]++;
+
+            while(mp.size()>2){
+                mp[fruits[left]]--;
+
+                if(mp[fruits[left]]==0)
+                mp.erase(fruits[left]);
+
+                left++;
             }
-
-            int len = high-low+1;
-            ans = max(ans, len);
-            high++;
+            ans = max(ans,right-left+1);
         }
-
         return ans;
     }
 };
