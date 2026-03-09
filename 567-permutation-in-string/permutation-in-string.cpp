@@ -1,19 +1,21 @@
 class Solution {
 public:
-    bool solve(string s,string s1){
-        sort(s.begin(),s.end());
-        sort(s1.begin(),s1.end());
-        return s==s1;
-    }
     bool checkInclusion(string s1, string s2) {
-        int n1=s1.size(),n2=s2.size();
-        if(n1>n2) return 0;
-        int i=0;
-        while(i<=n2-n1){
-            string s=s2.substr(i,s1.size());
-            if(solve(s,s1)) return 1;
-            i++;
+        
+        vector<int>freq1(26,0),freq2(26,0);
+        for(char ch:s1) freq1[ch-'a']++;
+        int left=0;
+        int k = s1.size(); // windows size
+
+        for(int right=0;right<s2.size();right++){
+            freq2[s2[right]-'a']++;
+
+            if(right - left + 1 > k){
+                freq2[s2[left]-'a']--;
+                left++;
+            }
+            if(freq1 == freq2) return true;
         }
-        return 0;
+        return false;
     }
 };
