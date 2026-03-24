@@ -1,10 +1,10 @@
 class Solution {
 public:
     int threeSumClosest(vector<int>& nums, int target) {
-        int ans = 0;
-        int temp = INT_MAX;
         sort(nums.begin(),nums.end());
         int size = nums.size();
+        int ans = 0;
+        int disTemp = INT_MAX; //For Distance need to Min so took Max
 
         for(int i=0;i<size-2;i++){
             int left = i+1;
@@ -13,11 +13,11 @@ public:
 
             while(left<right){
                 sum = nums[i]+nums[left]+nums[right];
-                int diffTarget = abs(sum-target);
+                int distance = abs(sum-target); //checking who is closest
 
-                if(diffTarget<temp){
+                if(distance < disTemp){
                     ans = sum;
-                    temp=diffTarget;
+                    disTemp = distance;
                 }
                 if(sum==target) return sum;
                 else if(sum>target) right--;
