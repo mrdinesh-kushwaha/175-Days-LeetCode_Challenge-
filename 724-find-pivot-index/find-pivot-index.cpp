@@ -1,20 +1,22 @@
 class Solution {
 public:
     int pivotIndex(vector<int>& nums) {
-        int prefix = 0;
-        int suffix = 0;
-        //Always (prefix of arr[i] + arr[i] + suffix of arr[i] = array of Sum) ke Eqaul HOGA
-        int sum=0;
-        for(int i:nums) sum+=i;
+        // using excluding i prefix and suffix approach
+        int n = nums.size();
+        vector<int>prefix(n,0);
+        vector<int>suffix(n,0);
 
-        // 🔥 check for index 0
-        if(sum - nums[0] == 0) return 0;
-
-        for(int i=1;i<nums.size();i++){
-            prefix += nums[i-1];
-            suffix = sum - nums[i] - prefix;
-            if(prefix == suffix) return i;
+        for(int i=1;i<n;i++){
+            prefix[i] = prefix[i-1] + nums[i-1];
         }
-    return -1;
+
+        for(int i=n-2;i>=0;i--){
+            suffix[i] = suffix[i+1] + nums[i+1];
+        }
+
+        for(int i=0;i<n;i++){
+            if(prefix[i]==suffix[i]) return i;
+        }
+        return -1;
     }
 };
